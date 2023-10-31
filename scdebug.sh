@@ -14,7 +14,7 @@ error_text() {}
 just_program() {
   program="$1"
   shift
-  strace -o .scdebug/"$program"/$TRACE_NAME "$program $@"
+  strace -o $HOME/.scdebug/"$program"/$TRACE_NAME "$program $@"
 }
 
 #### Main Program
