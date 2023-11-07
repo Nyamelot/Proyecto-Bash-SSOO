@@ -20,6 +20,8 @@ usage() {
   echo "✦ -sto [argument]: write -sto and a set of arguments to for strace command"
   echo "✦ -pattch [list of arguments]: write -pattch to trace processes in the background giving a list of pids"
   echo "✦ -nattch [list of arguments]: write -nattch to trace processes in the background giving a list of names"
+  echo "✦ -v: write -v and write a program to see the most recent traced program"
+  echo "✦ -vall: write -vall and write a program to see all the traced programs"
 }
 options() {
   program=""
@@ -35,7 +37,7 @@ options() {
       -h | --help)
         shift
         usage
-        break
+        exit 0
         ;;
         -nattch)
           nattch=true
@@ -98,7 +100,7 @@ options() {
             program_parameters+=($1)
             shift
           done
-        elif [ $2 == "-v" ]; then
+        elif [ "$2" == "-v" ] || [ "$2" == "-vall" ]; then
           program=$1
           shift
         else
@@ -152,7 +154,3 @@ pid_list(){
 #### Main Program
   options $@
   
-
-
-
-
